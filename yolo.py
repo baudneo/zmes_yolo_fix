@@ -15,8 +15,7 @@ import imutils
 # cv2 version check for unconnected layers fix
 def cv2_version() -> int:
     (maj, minor, patch) = cv2.__version__.split(".")
-    min_ver = int(maj + minor)
-    patch = patch if patch.isnumeric() else 0
+    patch = patch if patch.isnumeric() else "0"
     return int(maj + minor + patch)
 
 # Class to handle Yolo based detection
