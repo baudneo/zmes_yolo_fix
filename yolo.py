@@ -16,14 +16,14 @@ import imutils
 def cv2_version() -> int:
     # Sick and tired of OpenCV playing games....
     maj, min, patch = "", "", ""
-    x = ver.split(".")
+    x = cv2.__version__.split(".")
     x_len = len(x)
     if x_len <= 2:
         maj, min = x
         patch = "0"
     elif x_len == 3:
         maj, min, patch = x
-        patch = patch.replace("-dev", "")
+        patch = patch.replace("-dev", "") or "0"
     else:
         g.log.Error("come and fix me again, OpenCV changing things every version just to play with us devs")
     return int(maj + min + patch)
