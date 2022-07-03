@@ -14,10 +14,20 @@ import imutils
 
 # cv2 version check for unconnected layers fix
 def cv2_version() -> int:
-    (maj, minor, patch) = cv2.__version__.split(".")
-    patch = patch if patch.isnumeric() else "0"
-    return int(maj + minor + patch)
-
+    # Sick and tired of OpenCV playing games....
+    maj, min, patch = "", "", ""
+    x = ver.split(".")
+    x_len = len(x)
+    if x_len <= 2:
+        maj, min = x
+        patch = "0"
+    elif x_len == 3:
+        maj, min, patch = x
+        patch = patch.replace("-dev", "")
+    else:
+        g.log.Error("come and fix me again, OpenCV changing things every version just to play with us devs")
+    return int(maj + min + patch)
+    
 # Class to handle Yolo based detection
 
 
