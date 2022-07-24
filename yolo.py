@@ -25,7 +25,7 @@ def cv2_version() -> int:
         maj, min, patch = x
         patch = patch.replace("-dev", "") or "0"
     else:
-        g.log.Error("come and fix me again, OpenCV changing things every version just to play with us devs")
+        g.logger.Error("come and fix me again, OpenCV changing things every version just to play with us devs")
     return int(maj + min + patch)
     
 # Class to handle Yolo based detection
